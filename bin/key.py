@@ -1,17 +1,7 @@
-from Crypto.PublicKey import RSA
+from cryptography.fernet import Fernet
 
-#creation d´un couple de clés
-key = RSA.generate(1024)
+key = Fernet.generate_key()
 
-#afficher ses clés:
-k = key.exportKey('PEM')
-p = key.publickey().exportKey('PEM')
-
-#sauvegarder ses clés dans des fichiers:
-with open('private.pem','w') as kf:
-	kf.write(k.decode())
-	kf.close()
-
-with open('public.pem','w') as pf:
-	pf.write(p.decode())
-	pf.close()
+file = open('key.key','wb')
+file.write(key)
+file.close

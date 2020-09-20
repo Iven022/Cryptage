@@ -1,0 +1,8 @@
+[Unit]
+Description=Encryption
+
+[Service]
+ExecStart=/home/iven/bin/decrypt.sh
+
+[Install]
+WantedBy=multi-user.target

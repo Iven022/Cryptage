@@ -1,26 +1,17 @@
+from cryptography.fernet import Fernet
 import os
 
-from Crypto.PublicKey import RSA
-
-#importer des clés à partir d'un fichier
-with open('private.pem','r') as fk:
-	priv = fk.read()
-	fk.close()
-
-with open('public.pem','r') as fp:
-	pub = fp.read()
-	fp.close()
-
-privat = RSA.importKey(priv)
-public = RSA.importKey(pub)
+file = open('key.key','rb')
+key = file.read()
+file.close	
 
 with open('/home/iven/src/Cryptage/ToEncrypt/tocrypt.txt','rb') as f:
 	data = f.read()
-	enc_data = public.encrypt(data, 32)
 
-pwd = os.getcwd()
-#print(pwd)
-f = open("/home/iven/src/Cryptage/Encrypted/Encrypt.txt", "w")
-f.write(str(enc_data))
+fernet = Fernet(key)
+encrypted = fernet.encrypt(data)
 f.close()
 
+with open('/home/iven/src/Cryptage/Encrypted/Encrypt.txt','wb') as f:
+	f.write(encrypted)
+f.close()
