@@ -27,5 +27,5 @@ You are then free to delete the folder you have downloaded.
 
 ## Authors
 
-* **Moonien Murugan** - *Initial work* - (https://github.com/Iven022/Cryptage.git)
+**Moonien Murugan** - *Initial work* - (https://github.com/Iven022/Cryptage.git)
 
