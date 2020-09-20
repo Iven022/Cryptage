@@ -1,12 +1,20 @@
 #!/bin/bash
 
-if [ -z "$(ls -A /home/iven/Encryption/ToEncrypt)" ]; then
-	echo "Empty"
-else
-	for file in /home/iven/Encryption/ToEncrypt/*; do
-    		txt="$(basename "$file")"
-		mv /home/iven/Encryption/ToEncrypt/$txt /home/iven/Encryption/ToEncrypt/tocrypt.txt
+while true;
+do
+	cd ~/src
+	dir=$(pwd)
 
-		python3 encrypt.py
-	done
-fi
+	if [ "$(ls -A /home/iven/src/Cryptage/ToEncrypt)" ]; then
+		for file in $dir/Cryptage/ToEncrypt/*; do
+	    		txt="$(basename "$file")"
+			mv $dir/Cryptage/ToEncrypt/$txt $dir/Cryptage/ToEncrypt/tocrypt.txt
+		
+			cd $dir/Cryptage/bin
+			python3 encrypt.py
+
+			cd $dir/Cryptage/ToEncrypt
+			rm $txt
+		done
+	fi
+done

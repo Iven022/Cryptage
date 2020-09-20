@@ -14,13 +14,13 @@ with open('public.pem','r') as fp:
 privat = RSA.importKey(priv)
 public = RSA.importKey(pub)
 
-with open('/home/iven/Encryption/ToEncrypt/tocrypt.txt','rb') as f:
+with open('/home/iven/src/Cryptage/ToEncrypt/tocrypt.txt','rb') as f:
 	data = f.read()
 	enc_data = public.encrypt(data, 32)
 
 pwd = os.getcwd()
 #print(pwd)
-f = open("/home/iven/Encryption/Encrypted/Encrypt.txt", "w")
+f = open("/home/iven/src/Cryptage/Encrypted/Encrypt.txt", "w")
 f.write(str(enc_data))
 f.close()
 
